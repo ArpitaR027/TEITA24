@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Jenkins Master
+    Your main Jenkins server is the Master. The Master’s job is to handle:
+    Scheduling build jobs.
+    Dispatching builds to the slaves for the actual execution.
+    Monitor the slaves (possibly taking them online and offline as required).
+    Recording and presenting the build results.
+    A Master instance of Jenkins can also execute build jobs directly.
+
+
+    Jenkins Slave
+    A Slave is a Java executable that runs on a remote machine. Following are the characteristics of Jenkins Slaves:
+    It hears requests from the Jenkins Master instance.
+    Slaves can run on a variety of operating systems.
+    The job of a Slave is to do as they are told to, which involves executing build jobs dispatched by the Master.
+    You can configure a project to always run on a particular Slave machine or a particular type of Slave machine, or
+    simply let Jenkins pick the next available Slave
+
+
+    Go to the Manage Jenkins section and scroll down to the section of Manage Nodes.
+    Click on New Node and give a name for the node, choose the Permanent Agent option and click on Ok.
+    Step 1:- Go to manage Jenkins and click in mage nodes and clouds.
+    Step 2:- Click on new node and give name to it and click on permanent agent.
+    Step 3:- Configure it.
+    Step 5:- After saving the configuration following window should be appear.
+    Step 6: Click on Launch and agent.jar. After that some files will be download, save it.
+    Step 7:- Open CMD where those files are saved . After that copy the second line from the output 5 and paste it in
+    cmd.
+    Step 8:- Now you can see slave is connected.
+
+
+
+
+    <p>
+        What is Selenium in Devops?
+        As a part of the UI testing team, Selenium test developers need to synchronize and orchestrate their test design
+        and execution as per schedule and triggers, that are defined in their continuous integration or continuous
+        delivery tools or platforms.
+        Test Design needs to be more agile, effortless, and error-free. There is a shift towards the enhancement of
+        existing or new test automation frameworks to integrate with continuous integration/continuous delivery
+        pipelines seamlessly.
+
+        Why to use maven in selenium project?
+        It will manage your Selenium test project's build compilation, documentation and other related project tasks
+        itself. It helps to create proper project structure,add and manage jar files in project's build path. It easily
+        guides the project by gathering current principles for best practices development.
+
+        Step 1: Click on new item, Give name to job and select maven project and then press on ok.
+        Step 2: Now let’s configure the job.
+        Step 3: After configuration click on Build now.
+    </p>
+
+    <p>
+        Docker architecture
+        Docker uses a client-server architecture. The Docker client talks to the
+        Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The
+        Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker
+        daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
+        Another Docker client is Docker Compose, that lets you work with applications consisting of a set of containers.
+
+
+        For install Docker we need following Commands:
+        sudo apt-get update
+
+        $ sudo apt-get install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+
+        Add Docker’s official GPG key:
+        $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-achieve-keyring
+        
+        Now Install Docker Engine:
+        $ sudo apt-get update
+        $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+        Now we will perform operation on docker:
+        For that we need use this commands:
+        $sude su Doker image ls
+
+        Git clone https://github.com/arpita770/docker.java.get 
+        Cd docker-java
+        Ls
+        Nano Dockerfile
+        Nano Hello.java
+
+        Now we will Build Docker Image:
+        For that we need following commands:- 
+        Docker build -t rait-java-app .
+        Docker run -it rait-java-app
+        Docker ps 
+        Docker ps -a
+
+    </p>
+</body>
+
+</html>
