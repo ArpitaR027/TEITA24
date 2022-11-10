@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <p>
+
+        What is Configuration Management?
+        Configuration management is the process of maintaining software and computer systems (for example servers,
+        storage, networks) in a known, desired and consistent state. It also allows access to an accurate historical
+        record of system state for project management and audit purposes.
+        System Administrators mostly perform repetitive tasks like installing servers, configuring those servers, etc.
+        These professionals can automate this task, by writing scripts.
+
+        What is Puppet?
+        Puppet is a system management tool for centralizing and automating the configuration management process. Puppet
+        is also used as a software deployment tool. It is an open-source configuration management software widely used
+        for server configuration, management, deployment, and orchestration of various applications and services across
+        the whole infrastructure of an organization.
+
+        Puppet comes in two versions:
+
+        Open Source Puppet:
+        It is a basic version of Puppet configuration management tool, which is also known as Open Source Puppet. It is
+        available directly from Puppet’s website and is licensed under the Apache 2.0 system
+
+        Puppet Enterprise:
+        Commercial version that offers features like compliance reporting,orchestration, role-based access control, GUI,
+        API, and command-line tools for effective management of nodes.
+
+        What are Functions of Puppet ?
+
+        Puppet allows you to define distinct configurations for every host.
+        The tool allows you to continuously monitor servers to confirm whether the required configuration exists or not
+        and it is not altered.
+        If the config is changed, Puppet tool will revert to the pre-defined configuration on the
+        host.
+
+
+        Communication between the Master and the Agent:
+        Step 1 - Once the connectivity is established between the agent and the master, the Puppet agent sends the data
+        about its state to the Puppet master server. These are called Facts: This information includes the hostname,
+        kernel details, IP address, file name details, etc
+
+
+
+
+        Step 2
+        - Puppet Master uses this data and compiles a list with the configuration to be applied to the agent. This list
+        of configuration to be performed on an agent is known as a catalog . This could be changed such as package
+        installation, upgrades or removals, File System creation, user creation or deletion, server reboot, IP
+        configuration changes, etc.
+
+
+
+        Step 3 - The agent uses this list of configuration to apply any required configuration changes on the node.
+        In case there are no drifts in the configuration, Agent does not perform any configuration changes and leaves
+        the node to run with the same configuration.
+
+        Step 4 - Once it is done the node reports back to puppet master indicating that the configuration has been
+        applied and completed.
+
+        Implementation and Output :
+
+        Installation of Puppet on Linux Step 1: 
+        Update Package List Before you start the installation process, update the list of available packages:
+        sudo apt-get update –y
+
+
+        Step 2: Set Up Hostname Resolution
+        With Puppet, master and client nodes communicate using hostname. Before installing Puppet, you need to set up a
+        unique hostname on each node.
+
+        Open the hosts file on each node by using:
+        sudo nano /etc/hosts
+
+        Paste the following lines at the end of each hosts file:
+        [puppet master ip] puppetmaster puppet [puppet client ip] puppetclient Where:
+        [puppet master ip] is the IP address of the master node, and
+        [puppet client ip] is the IP address of the client node.
+
+        Press Ctrl + X to close the file, and then type Y and press Enter to save the changes you made.
+
+        Step 3: Install Puppet Server on Master Node
+        Download the latest Puppet version on the master node:
+        Wget https://apt.puppetlabs.com/puppet7-release-focal.deb
+        Once the download is complete, install the package by using:
+        sudo dpkg -i puppet7-release-focal.deb
+
+
+        Update the package repository:
+        sudo apt-get update -y
+
+        Install the Puppet server with the following command
+        sudo apt-get install puppetserver –y
+
+        Open the puppetserver file by using:
+        sudo nano /etc/default/puppetserver
+        Press Ctrl + X to close the puppetserver file. TypeY and press Enter to save the changes you made.
+
+        Start the Puppet service and set it to launch on system boot by using:
+        sudo systemctl start puppetserver
+        sudo systemctl enable puppetserver
+
+        Check if the Puppet service is running with:
+        sudo systemctl status puppetserver
+
+        Step 4: Install Puppet Agent on Client Node
+        1. Download the latest version of Puppet on a client node:
+        wget https://apt.puppetlabs.com/puppet7-release-focal.deb
+
+        2 . Once the download is complete, install the package by using: sudo dpkg -i puppet6-release-focal.deb
+        Update the package repository one more time:
+        sudo apt-get update -y
+
+        Install the Puppet agent by using:
+        Open the Puppet configuration file:
+        sudo nano /etc/puppetlabs/puppet/puppet.conf
+
+        Add the following lines to the end of the Puppet configuration file to define thePuppet master information:
+        [main]
+
+        Press Ctrl + X to close the Puppet configuration file, then type Y and press Enter to save the changes.
+        Start the Puppet service and set it to launch on system boot by using:
+        sudo systemctl start puppet
+        sudo systemctl enable puppet
+
+
+        Check if the Puppet service is running with:
+        sudo systemctl status puppet
+
+        Step 5: Sign Puppet Agent Certificate
+        Using the Puppet master node, list all the available certificates:
+        sudo /opt/puppetlabs/bin/puppetserver ca list –all
+
+        Sign the certificates with:
+        sudo /opt/puppetlabs/bin/puppetserver ca sign –all
+
+        2. Use the following command to test the communication between the master and client nodes:
+        sudo /opt/puppetlabs/bin/puppet agent –test
+
+    </p>
+</body>
+
+</html>
