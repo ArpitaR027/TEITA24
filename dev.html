@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Configuration Management?
+        In software development circles, configuration management refers to the process by which all environments
+        hosting software are configured and maintained.
+        Every development pipeline requires multiple environments for multiple purposes – unit testing, integration
+        testing, acceptance testing, load testing, system testing, end-user testing, etc. These environments become
+        increasingly complex as the testing moves towards pre-prod and prod environments. Configuration management is an
+        automated process that ensures the configuration of these environments is optimal.
+
+        Puppet is a system management tool for centralizing and automating the configuration management process. Puppet
+        is also used as a software deployment tool. It is an open-source configuration management software widely used
+        for server configuration, management, deployment, and orchestration of various applications and services across
+        the whole infrastructure of an organization.
+
+        Four types of Puppet building blocks are
+
+        Resources
+        Classes
+        Manifest
+        Modules
+
+        here are three kinds of resource types:
+
+        Puppet core or built-in resource types.
+        Puppet defined resource types.
+        Puppet custom resource types.
+
+
+        Puppet Classes:
+        In Puppet, classes are code blocks that can be called in a code elsewhere. Using classes allows you reuse Puppet
+        code, and can make reading manifests easier.
+
+        Class Definition
+        A class definition is where the code that composes a class lives. Defining a class makes the class available to
+        be used in manifests, but does not actually evaluate anything.
+
+        Class Declaration
+        A class declaration occurs when a class is called in a manifest. A class declaration tells Puppet to evaluate
+        the code within the class. Class declarations come in two different flavors: normal and resource-like.
+
+        Puppet Manifest:
+        Manifest is a directory containing puppet DSL files. Those files have a .pp extension. The .pp extension stands
+        for puppet program. The puppet code consists of definitions or declarations of Puppet Classes.
+
+        Puppet Modules:
+        A module is a collection of manifests and data (such as facts, files, and templates), and they have a specific
+        directory structure. Modules are useful for organizing your Puppet code, because they allow you to split your
+        code into multiple manifests.
+
+    </p>
+</body>
+
+</html>
