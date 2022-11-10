@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Developing a Manifest
+        To demonstrate how to write a Puppet manifests, classes, and modules, we will use Puppet to set up LAMP stack on
+        Ubuntu
+        we know that we want an Ubuntu 20.04 server with the following resources:
+
+        Apache package (apache2) installed
+        Apache service (apache2) running
+        MySQL Server package (mysql-server) installed
+        MySQL Server service (mysql) running
+        PHP5 package (php5) installed
+        A test PHP script file (info.php)
+
+
+        Update apt before installing packages
+        Implementation and Output:-
+        Install LAMP with a Single Manifest
+
+        You will learn how to write a manifest that will use following types of resource declarations:
+        exec: To execute commands, such as apt-get 
+        package: To install packages via apt 
+        service: To ensure that a service is running 
+        file: To ensure that certain files exist
+
+        Create Manifest
+        On a fresh lamp-1 VPS, create a new manifest:
+        sudo vi /etc/puppet/manifests/lamp.pp
+
+        Add the following lines to declare the resources that we just determined we wanted. The inline comments detail
+        each resource declaration:
+
+
+<!-- 
+        # execute 'apt-get update'
+        exec { 'apt-update': # exec resource named 'apt-update' command => '/usr/bin/apt-get update' # command this
+        resource will run
+        }
+
+        # install apache2 package package { 'apache2':
+        require => Exec['apt-update'], # require 'apt-update' before installing ensure => installed,
+        }
+
+        # ensure apache2 service is running service { 'apache2':
+        ensure => running,
+        }
+
+        # install mysql-server package package { 'mysql-server':
+        require => Exec['apt-update'], # require 'apt-update' before installing ensure => installed,
+        }
+
+        # ensure mysql service is running service { 'mysql':
+        ensure => running,
+        }
+
+        # install php5 package package { 'php5':
+        require => Exec['apt-update'], # require 'apt-update' before installing ensure => installed,
+        }
+
+        # ensure info.php file exists
+        file { '/var/www/html/info.php':
+        ensure => file,
+        content => '
+        <?php phpinfo(); ?>', # phpinfo code
+        require => Package['apache2'], # require 'apache2' package before creating
+        } -->
+
+
+        Apply Manifest
+        Now you will want to use the puppet apply command to execute the manifest. On lamp-1, run this:
+        sudo puppet apply --test
+
+    </p>
+</body>
+
+</html>
